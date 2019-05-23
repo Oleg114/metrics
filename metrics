@@ -5,13 +5,13 @@ import sys
 
 arg=sys.argv[1].lower() if len(sys.argv) > 1 else 'cpu'
 if arg not in ['cpu','mem']:
-	print ('The script takes one argument whitch can be set to "cpu" or "mem"')
+	print ('The script takes one argument which can be set to "cpu" or "mem"')
 	exit()
 def show_res(obj,arg):
 	for a in dir(obj) :
 		if not a.startswith('_') and not callable(getattr(obj,a)):
 			print ('System.{}.{}  {}'.format(arg,a,getattr(obj,a)))
-		
+#psutil.PROCFS_PATH = '/host_proc'		
 if arg == 'cpu':
 	show_res(psutil.cpu_times(),'CPU')
 else :
